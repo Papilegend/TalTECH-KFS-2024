@@ -51,7 +51,7 @@ client.subscribe("class/iot01") #subscribe
 time.sleep(2)
 
 padded_num = str(1).zfill(2)
-client.publish(("class/iot" + padded_num + "Hello Tristan"))
+client.publish(("class/iot" + padded_num + "Elisabeth tervitab"))
 
 try:
         while True:
