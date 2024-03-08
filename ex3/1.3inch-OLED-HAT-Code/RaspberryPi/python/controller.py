@@ -27,7 +27,7 @@ try:
 except IOError as e:
     print(e)
 
-broker="10.8.0.1"
+broker="10.8.0.17"
 
 # Define callback
 def on_message(client, userdata, message):
@@ -39,7 +39,7 @@ def on_message(client, userdata, message):
     time.sleep(5)
     disp.clear()
 
-client = paho.Client("client-001") 
+client = paho.Client("client-017") 
 
 # Bind function to callback
 client.on_message = on_message
@@ -51,7 +51,7 @@ print("connecting to broker ", broker)
 client.connect(broker)   # connect
 client.loop_start()      # start loop to process received messages
 print("subscribing ")
-client.subscribe("class/iot01") #subscribe
+client.subscribe("class/iot17") #subscribe
 time.sleep(2)
 
 # loop until exit with CTRL + C
