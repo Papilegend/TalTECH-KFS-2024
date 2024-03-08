@@ -27,7 +27,7 @@ try:
 except IOError as e:
     print(e)
 
-broker="10.8.0.07"
+broker="10.8.0.17"
 
 # Define callback
 def on_message(client, userdata, message):
