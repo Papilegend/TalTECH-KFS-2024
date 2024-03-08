@@ -32,13 +32,13 @@ broker="10.8.0.1"
 # Define callback
 def on_message(client, userdata, message):
     global disp, draw, font10, image1
-    draw.text((0, 0), "Rainis on tolgus", font = font10, fill = 0)
+    draw.text((0, 0), "HALLOOOO", font = font10, fill = 0)
     disp.ShowImage(disp.getbuffer(image1))
     print("received message =", str(message.payload.decode("utf-8")))
     time.sleep(5)
     disp.clear()
 
-client = paho.Client("client-007") 
+client = paho.Client("client-012") 
 
 # Bind function to callback
 client.on_message = on_message
