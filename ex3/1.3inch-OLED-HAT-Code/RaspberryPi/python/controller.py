@@ -38,7 +38,7 @@ def on_message(client, userdata, message):
     time.sleep(5)
     disp.clear()
 
-client = paho.Client("client-012") 
+client = paho.Client("client-007") 
 
 # Bind function to callback
 client.on_message = on_message
