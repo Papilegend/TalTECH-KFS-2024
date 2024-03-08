@@ -53,14 +53,22 @@ print("subscribing ")
 client.subscribe("class/iot07") #subscribe
 time.sleep(2)
 
+# Set the controller ID you want to send the message to
+destination_controller_id = "12"  # Replace with the desired controller ID
+
 try:
-        while True:
-                    time.sleep(5)
-                    for num in range(1, 13):
-                        padded_num = str(num).zfill(2)
-                        client.publish("class/iot" + padded_num, "Your controller has been disconnected")
-    
-except KeyboardInterrupt:    
-    print("ctrl + c:")
-    disp.RPI.module_exit()
-    exit()
+    while True:
+        time.sleep(5)
+        for num in range(1, 13):
+            padded_num = str(num).zfill(2)
+            topic = "class/iot" + padded_num
+
+            # Check if the current topic matches the destination controller
+            if padded_num == destination_controller_id:
+                message = "Jou Gregor" + padded_num
+                client.publish(topic, message)
+
+except KeyboardInterrupt:
+    print("exiting")
+    client.disconnect()  # disconnect
+    client.loop_stop()  # stop loop
