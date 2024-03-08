@@ -86,7 +86,7 @@ try:
     
     print ("***draw text")
     draw.text((30,0), 'Waveshare ', font = font10, fill = 0)
-    draw.text((28,20), u'Elisabeth ', font = font, fill = 0)
+    draw.text((28,20), u'微雪电子 ', font = font, fill = 0)
 
     # image1=image1.rotate(180) 
     disp.ShowImage(disp.getbuffer(image1))
