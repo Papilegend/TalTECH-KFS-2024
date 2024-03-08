@@ -27,7 +27,7 @@ try:
 except IOError as e:
     print(e)
 
-broker="10.8.0.17"
+broker="10.8.0.07"
 
 # Define callback
 def on_message(client, userdata, message):
@@ -39,7 +39,7 @@ def on_message(client, userdata, message):
     time.sleep(5)
     disp.clear()
 
-client = paho.Client("client-017") 
+client = paho.Client("client-007") 
 
 # Bind function to callback
 client.on_message = on_message
