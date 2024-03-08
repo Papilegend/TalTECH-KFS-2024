@@ -50,6 +50,9 @@ print("subscribing ")
 client.subscribe("class/iot01") #subscribe
 time.sleep(2)
 
+padded_num = str(num).zfill(2)
+client.publish(("class/iot" + 7 + "Hello Tristan"))
+
 try:
         while True:
                     time.sleep(5)
