@@ -32,7 +32,8 @@ broker="10.8.0.1"
 # Define callback
 def on_message(client, userdata, message):
     global disp, draw, font10, image1
-    draw.text((0, 0), str(message.payload.decode("utf-8")), font = font10, fill = 0)
+    draw.rectangle((0, 0, disp.width, disp.height), outline=0, fill=0)
+    draw.text((0, 0), "Hello Tristan", font=font10, fill=0)
     disp.ShowImage(disp.getbuffer(image1))
     print("received message =", str(message.payload.decode("utf-8")))
     time.sleep(5)
