@@ -8,14 +8,52 @@ import time
 import paho.mqtt.client as paho
 from PIL import Image, ImageDraw, ImageFont
 
+try:
+    disp = SH1106.SH1106()
+    disp.Init()
+    disp.clear()
+    # Create blank image for drawing.
+    image1 = Image.new('1', (disp.width, disp.height), "WHITE")
+    draw = ImageDraw.Draw(image1)
+    font = ImageFont.truetype('Font.ttf', 20)
+    font10 = ImageFont.truetype('Font.ttf', 13)
+    print ("***draw line")
+    draw.line([(0,0),(127,0)], fill = 0)
+    draw.line([(0,0),(0,63)], fill = 0)
+    draw.line([(0,63),(127,63)], fill = 0)
+    draw.line([(127,0),(127,63)], fill = 0)
+    print ("***draw rectangle")
+    
+    print ("***draw text")
+    draw.text((30,0), 'Waveshare ', font = font10, fill = 0)
+    draw.text((28,20), u'微雪电子 ', font = font, fill = 0)
+
+    sp.ShowImage(disp.getbuffer(image1))
+    time.sleep(2)
+    
+    print ("***draw image")
+    Himage2 = Image.new('1', (disp.width, disp.height), 255)  # 255: clear the frame
+    bmp = Image.open('pic.bmp')
+    Himage2.paste(bmp, (0,5))
+    # Himage2=Himage2.rotate(180) 	
+    disp.ShowImage(disp.getbuffer(Himage2))
+
+    
+except IOError as e:
+    print(e)
 
 broker="10.8.0.17"
 
 # Define callback
 def on_message(client, userdata, message):
+
+    global disp, draw, font10, image1
+    draw.text((0, 0), str(message.payload.decode("utf-8")), font = font10, fill = 0)
+    disp.ShowImage(disp.getbuffer(image1))
+    
     print("received message =", str(message.payload.decode("utf-8")))
     time.sleep(5)
-
+    time.clear()
 client = paho.Client("client-17") 
 
 # Bind function to callback
