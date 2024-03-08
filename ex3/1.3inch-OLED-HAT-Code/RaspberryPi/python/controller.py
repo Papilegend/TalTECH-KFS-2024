@@ -32,7 +32,6 @@ broker="10.8.0.1"
 # Define callback
 def on_message(client, userdata, message):
     global disp, draw, font10, image1
-    message = "Elisabeth"
     draw.text((0, 0), str(message.payload.decode("utf-8")), font = font10, fill = 0)
     disp.ShowImage(disp.getbuffer(image1))
     print("received message =", str(message.payload.decode("utf-8")))
@@ -87,7 +86,7 @@ try:
     
     print ("***draw text")
     draw.text((30,0), 'Waveshare ', font = font10, fill = 0)
-    draw.text((28,20), u'微雪电子 ', font = font, fill = 0)
+    draw.text((28,20), u'Elisabeth ', font = font, fill = 0)
 
     # image1=image1.rotate(180) 
     disp.ShowImage(disp.getbuffer(image1))
