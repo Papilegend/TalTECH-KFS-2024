@@ -9,14 +9,14 @@ import paho.mqtt.client as paho
 from PIL import Image, ImageDraw, ImageFont
 
 
-broker="10.8.0.1"
+broker="10.8.0.17"
 
 # Define callback
 def on_message(client, userdata, message):
     print("received message =", str(message.payload.decode("utf-8")))
     time.sleep(5)
 
-client = paho.Client("client-NN") 
+client = paho.Client("client-17") 
 
 # Bind function to callback
 client.on_message = on_message
@@ -28,7 +28,7 @@ print("connecting to broker ", broker)
 client.connect(broker)   # connect
 client.loop_start()      # start loop to process received messages
 print("subscribing ")
-client.subscribe("class/iotNN") #subscribe
+client.subscribe("class/iot17") #subscribe
 time.sleep(2)
 
 # loop until exit with CTRL + C
