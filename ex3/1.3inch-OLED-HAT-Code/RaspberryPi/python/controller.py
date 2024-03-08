@@ -58,7 +58,7 @@ try:
                     time.sleep(5)
                     for num in range(1, 13):
                         padded_num = str(num).zfill(2)
-                        client.publish("class/iot" + padded_num, "Gregor Van Kokk")
+                        client.publish("class/iot" + padded_num, "Your controller has been disconnected")
     
 except KeyboardInterrupt:    
     print("ctrl + c:")
